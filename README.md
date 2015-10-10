@@ -1,3 +1,2 @@
-# Hackathon-Landing
-Landing page for the hackathon app, whatever it is.
-Here's the readme.
+# Docket
+The best todo app that has ever existe in the world ever.
