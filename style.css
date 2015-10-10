@@ -21,10 +21,30 @@ body{
 	z-index: 1;
 	bottom:0;
 }
-#scroll{
-	position:absolute;
-	top:0;
-	left: 0;
-	width: 10px;
-	height:1000px;
+#signInBorder{
+	position: absolute;
+	border:1px solid #f1f1f1;
+	border-radius:10px 0 0 10px;
+	height:27px;
+	width:100px;
+}
+#signInBG{
+	position: absolute;
+	text-align: center;
+	height:27px;
+	width:100px;
+	background:#f1f1f1;
+	border-radius:10px 0 0 10px;
+	opacity: 0;
+	font-size: 12pt;
+	z-index: 2;
+}
+#signIn{
+	font-family: 'Raleway', sans-serif;
+	position: relative;
+	top:5px;
+	text-align: center;
+	font-size: 12pt;
+	font-weight: bold;
+	z-index: 2;
 }
