@@ -56,6 +56,8 @@ INSTALLED_APPS = (
     'rest_framework',
     'apps.core',
     'apps.accounts',
+    'apps.rooms',
+    'apps.slots',
 )
 
 # RESTful API stuff
