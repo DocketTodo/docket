@@ -21,30 +21,35 @@ body{
 	z-index: 1;
 	bottom:0;
 }
-#signInBorder{
-	position: absolute;
-	border:1px solid #f1f1f1;
-	border-radius:10px 0 0 10px;
-	height:27px;
-	width:100px;
-}
-#signInBG{
-	position: absolute;
-	text-align: center;
-	height:27px;
-	width:100px;
-	background:#f1f1f1;
-	border-radius:10px 0 0 10px;
-	opacity: 0;
-	font-size: 12pt;
-	z-index: 2;
-}
 #signIn{
-	font-family: 'Raleway', sans-serif;
 	position: relative;
-	top:5px;
-	text-align: center;
-	font-size: 12pt;
-	font-weight: bold;
+	left: 10px;
+	top: 0;
+	height: 30px;
+	width: 100px;
+	border: 3px solid #102020;
+	border-right: 1.5px solid #102020;
+	border-radius: 7px 0 0 7px;
+	/*backgrounld: #f1f1f1;*/
 	z-index: 2;
+}
+#signUp{
+	position: relative;
+	left: 10px;
+	top: -36px;
+	height: 30px;
+	width: 100px;
+	border: 3px solid #102020;
+	border-left: 1.5px solid #102020;
+	border-radius: 0 7px 7px 0;
+	/*backgrounld: #f1f1f1;*/
+	z-index: 2;
+}
+#signTxt{
+	position: relative;
+	text-align: center;
+	top: 5px;
+	z-index: 3;
+	font-family: 'Raleway', sans-serif;
+	color: #102020;
 }
