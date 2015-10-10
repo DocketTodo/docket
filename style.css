@@ -1,9 +1,30 @@
 body{
 	background:#f1f1f1;
+	width:100%;
+	overflow-x: hidden;
 }
 #title{
+	position:relative;
 	font-family: 'Hind Siliguri', sans-serif;
-	font-size:70pt;
+	font-size:300pt;
 	text-align: center;
-	padding-top:50px;
+	padding-top:10px;
+	color:#102020;
+	opacity: 0.8;
+	z-index: 2;
+}
+#hero{
+	position:absolute;
+	width:110%;
+	opacity:.6;
+	left: -5%;
+	z-index: 1;
+	bottom:0;
+}
+#scroll{
+	position:absolute;
+	top:0;
+	left: 0;
+	width: 10px;
+	height:1000px;
 }
