@@ -2,17 +2,13 @@
 {% load staticfiles %}
 
 {% block content %}
-	things work?
-    {% if request.user.is_authenticated %}
-        hi
-    {% else %}
-        <form method='POST'>
-            {% csrf_token %}
-            username
-        	{{ form.username }}
-            password
-            {{ form.password }}
-            <button>look i'm a button</button>
-        </form>
-    {% endif %}
+	Docket
+    <form method='POST'>
+        {% csrf_token %}
+        username:<br>
+    	{{ form.username }}
+        <br>password:<br>
+        {{ form.password }}
+        <br><button>Sign In</button>
+    </form>
 {% endblock %}
