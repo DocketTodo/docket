@@ -1,0 +1,15 @@
+body{
+	background:#f1f1f1;
+}
+#title{
+	font-family: 'Hind Siliguri', sans-serif;
+	font-size:70pt;
+	text-align: center;
+	padding-top:50px;
+}
+#entryForm{
+	padding-left: 45%;
+}
+#loginStuff{
+	padding-left: 45%;
+}
