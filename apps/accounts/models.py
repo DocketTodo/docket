@@ -60,7 +60,7 @@ class DocketUser(AbstractBaseUser, PermissionsMixin):
     def save(self, *args, **kwargs):
         if not is_password_usable(self.password):
             self.set_password(self.password)
-        super(ElementalUser, self).save(*args, **kwargs)
+        super(DocketUser, self).save(*args, **kwargs)
         return super(DocketUser, self).save(*args, **kwargs)
 
     def get_full_name(self):
