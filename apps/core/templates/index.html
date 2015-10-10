@@ -2,33 +2,17 @@
 {% load staticfiles %}
 
 {% block content %}
-<<<<<<< Updated upstream
-	Docket
+	<title>Docket</title>
+    <div id='header'>
+        <div id='title'>Docket</div>
+    </div>
     <form method='POST'>
+    <div id='loginStuff'>
         {% csrf_token %}
         username:<br>
     	{{ form.username }}
         <br>password:<br>
         {{ form.password }}
-        <br><button>Sign In</button>
-    </form>
-=======
-	<title>Docket</title>
-    <div id='header'>
-        <div id='title'>Docket</div>
-    </div>
-    {% if request.user.is_authenticated %}
-        hi
-    {% else %}
-        <form method='POST'>
-        <div id='loginStuff'>
-            {% csrf_token %}
-            username:<br>
-        	{{ form.username }}
-            <br>password:<br>
-            {{ form.password }}
-            <br><button>submit</button>
-        </div> 
-    {% endif %}
->>>>>>> Stashed changes
+        <br><button>submit</button>
+    </div> 
 {% endblock %}
