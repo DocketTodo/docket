@@ -25,6 +25,11 @@ class Index(FormView):
     form_class = LoginForm
     success_url = reverse_lazy('index')
     
+    def dispatch(self, request, *args, **kwargs):
+        # if request.user.is_authenticated:
+            # return redirect(reverse(''))
+        return super(Index, self).dispatch(request, *args, **kwargs)
+
     def form_valid(self, form):
         super(Index, self).form_valid(form)
         username = form.cleaned_data['username']

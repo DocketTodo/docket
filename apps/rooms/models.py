@@ -6,3 +6,6 @@ class Room(models.Model):
     name = models.CharField(max_length=255)
     user = models.ForeignKey(DocketUser)
     description = models.TextField(blank=True, null=True)
+
+    def __unicode__(self):
+        return self.name
