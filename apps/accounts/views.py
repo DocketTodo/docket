@@ -20,7 +20,7 @@ from apps.accounts.mixins import UnbannedUserMixin
 
 
 from .models import DocketUser
-from apps.projects.models import Project
+# from apps.projects.models import Project
 
 from .forms import UserSettingsForm
 

@@ -3,9 +3,9 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 admin.autodiscover()
 
-from apps.core.views import (Index, SignUp, Logout, TermsOfService,
-								BanPage)
-from apps.accounts.views import ProfileView, UserSettings
+# from apps.core.views import (Index, SignUp, Logout, TermsOfService,
+# 								BanPage)
+# from apps.accounts.views import ProfileView, UserSettings
 
 urlpatterns = patterns('',
 
