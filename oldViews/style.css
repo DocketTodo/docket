@@ -1,0 +1,58 @@
+body{
+	background:#f1fbf5;
+	width:100%;
+	overflow-x: hidden;
+}
+#title{
+	position:relative;
+	font-family: 'Hind Siliguri', sans-serif;
+	font-size:300pt;
+	text-align: center;
+	padding-top:10px;
+	color:#102020;
+	opacity: 0.8;
+	z-index: 2;
+}
+#hero{
+	position:absolute;
+	width:110%;
+	opacity:.6;
+	left: -5%;
+	z-index: 1;
+	bottom:0;
+}
+.buttons{
+	cursor: pointer;
+}
+#signIn{
+	position: relative;
+	left: 10px;
+	top: 0;
+	height: 30px;
+	width: 100px;
+	border: 3px solid #102020;
+	border-right: 1.5px solid #102020;
+	border-radius: 7px 0 0 7px;
+	background-color: #f1f1f1;
+	z-index: 2;
+}
+#signUp{
+	position: relative;
+	left: 10px;
+	top: -36px;
+	height: 30px;
+	width: 100px;
+	border: 3px solid #102020;
+	border-left: 1.5px solid #102020;
+	border-radius: 0 7px 7px 0;
+	background-color: #f1f1f1;
+	z-index: 2;
+}
+#signTxt{
+	position: relative;
+	text-align: center;
+	top: 5px;
+	z-index: 3;
+	font-family: 'Raleway', sans-serif;
+	color: #102020;
+}
