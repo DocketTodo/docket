@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form.name }}
+        {{ form.description }}
+        <div style="display:none;"><!-- inline style b/c laziness at hackathon -->{{ form.user }}</div>
+        <input type="submit" value="Create" />
+    </form>
+{% endblock %}

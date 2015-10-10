@@ -11,7 +11,7 @@ class RoomSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Room
-        fields = ('username', 'name', 'description', 'slots', )
+        fields = ('username', 'name', 'description', 'slots', 'rating', )
 
     def get_username(self, obj):
         return obj.user.username
@@ -38,7 +38,7 @@ class TimeSlotSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = TimeSlot
-        fields = ('username', 'start_dt', 'end_dt', 'room', )
+        fields = ('name', 'username', 'start_dt', 'end_dt', 'room', )
 
     def get_username(self, obj):
         return obj.user.username

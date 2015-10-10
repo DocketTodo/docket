@@ -21,6 +21,8 @@ urlpatterns = patterns('',
     # Namespaces
     # url(r'^(?i)projects/', include('apps.projects.urls', namespace='projects')),
     url(r'^(?i)accounts/', include('apps.accounts.urls', namespace='accounts')),
+    url(r'^(?i)reservations/', include('apps.slots.urls', namespace='reservations')),
+    url(r'^(?i)rooms/', include('apps.rooms.urls', namespace='rooms')),
 
     # REST stuff
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),

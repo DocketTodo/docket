@@ -8,3 +8,10 @@ class TimeSlot(models.Model):
     user = models.ForeignKey(DocketUser, blank=True, null=True)
     start_dt = models.DateTimeField()
     end_dt = models.DateTimeField()
+    name = models.CharField(max_length=255, blank=True, null=True)
+
+    def __unicode__(self):
+        if self.name:
+            return self.name
+        else:
+            return 'Unnamed reservation'
