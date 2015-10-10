@@ -3,14 +3,14 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 admin.autodiscover()
 
-# from apps.core.views import (Index, SignUp, Logout, TermsOfService,
-# 								BanPage)
+from apps.core.views import (Index, SignUp, Logout, TermsOfService,
+								BanPage)
 # from apps.accounts.views import ProfileView, UserSettings
 
 urlpatterns = patterns('',
 
 	# Index views
-    # url(r'^$', Index.as_view(), name='index'),
+    url(r'^$', Index.as_view(), name='index'),
     url(r'^(?i)admin/?', include(admin.site.urls)),
     # url(r'^(?i)terms-of-service/?$', TermsOfService.as_view(), name='terms'),
     # url(r'^(?i)banned/?$', BanPage.as_view(), name='ban-page'),
@@ -20,7 +20,7 @@ urlpatterns = patterns('',
 
     # Namespaces
     # url(r'^(?i)projects/', include('apps.projects.urls', namespace='projects')),
-    # url(r'^(?i)accounts/', include('apps.accounts.urls', namespace='accounts')),
+    url(r'^(?i)accounts/', include('apps.accounts.urls', namespace='accounts')),
 
     # REST stuff
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),

@@ -16,7 +16,7 @@ from django.views.generic.edit import (FormView, UpdateView, CreateView,
                                        DeleteView)
 from .forms import LoginForm, SignupForm
 from apps.accounts.models import DocketUser
-from apps.accounts.mixins import UnbannedUserMixin
+# from apps.accounts.mixins import UnbannedUserMixin
 
 
 from .models import DocketUser
@@ -24,9 +24,9 @@ from .models import DocketUser
 
 from .forms import UserSettingsForm
 
-from .mixins import UnbannedUserMixin, LoggedInRequiredMixin
+from .mixins import LoggedInRequiredMixin
 
-class ProfileView(UnbannedUserMixin, TemplateView):
+class ProfileView(TemplateView):
     template_name = 'profile.html'
 
     def get_context_data(self, **kwargs):
@@ -44,7 +44,7 @@ class ProfileView(UnbannedUserMixin, TemplateView):
         
         return context
 
-class UserSettings(LoggedInRequiredMixin, UnbannedUserMixin, FormView):
+class UserSettings(LoggedInRequiredMixin, FormView):
     template_name = 'user_settings.html'
     form_class = UserSettingsForm
     success_url = reverse_lazy('accounts:user-settings')
@@ -86,7 +86,7 @@ class Logout(View):
         logout(request)
         return redirect('/')
 
-class Login(UnbannedUserMixin, FormView):
+class Login(FormView):
     template_name = 'login.html'
     form_class = LoginForm
     success_url = reverse_lazy('index')

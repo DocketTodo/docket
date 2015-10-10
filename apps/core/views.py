@@ -17,10 +17,10 @@ from django.views.generic.edit import (FormView, UpdateView, CreateView,
 
 from .forms import LoginForm, SignupForm
 from apps.accounts.models import DocketUser
-from apps.accounts.mixins import UnbannedUserMixin
+# from apps.accounts.mixins import UnbannedUserMixin
 
 
-class Index(UnbannedUserMixin, FormView):
+class Index(FormView):
     template_name = 'index.html'
     form_class = LoginForm
     success_url = reverse_lazy('index')
@@ -34,10 +34,7 @@ class Index(UnbannedUserMixin, FormView):
         if user is not None:
             if user.is_active:
                 login(self.request, user)
-                if not user.banned:
-                    return super(Index, self).form_valid(form)
-                else:
-                    return redirect(reverse('ban-page'))
+                return super(Index, self).form_valid(form)
             else:
                 form.errors['non_field_errors'] = ['Your account is not active.']
                 return render(self.request, 'index.html',
