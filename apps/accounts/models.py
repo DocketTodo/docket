@@ -58,6 +58,9 @@ class DocketUser(AbstractBaseUser, PermissionsMixin):
         verbose_name_plural = _('users')
 
     def save(self, *args, **kwargs):
+        if not is_password_usable(self.password):
+            self.set_password(self.password)
+        super(ElementalUser, self).save(*args, **kwargs)
         return super(DocketUser, self).save(*args, **kwargs)
 
     def get_full_name(self):
