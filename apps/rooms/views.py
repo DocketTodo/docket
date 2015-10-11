@@ -28,6 +28,9 @@ class RoomSearch(LoggedInRequiredMixin, ListView):
     def get_queryset(self, **kwargs):
         qs = Room.objects.all()
         # add searching
+        if self.request.GET.get('search'):
+            s = self.request.GET.get('search')
+            qs = qs.filter(Q(name__icontains=s) | Q(description__icontains=s))
         return qs
 
 

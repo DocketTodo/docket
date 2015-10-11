@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <form method='GET'><input name="search" /></form>
     {% for r in rooms %}
         <div><a href="/rooms/room/{{ r.id }}">{{ r }}</a></div>
     {% endfor %}
