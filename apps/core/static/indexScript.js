@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    $('#close').css({'cursor': 'pointer'});
     $('#loginStuff').hide();
 	var centerPx = $(window).width()/2;
 	$('#signIn').css('left',centerPx-101.5);
