@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    $('#loginStuff').hide();
 	var centerPx = $(window).width()/2;
 	$('#signIn').css('left',centerPx-101.5);
 	$('#signUp').css('left',centerPx+1.5);
@@ -8,4 +9,7 @@ $(document).ready(function(){
 	$('.buttons').mouseleave(function(){
 		$(this).animate({opacity:'1'}, 200);
 	});
+    $('#signIn').click(function() {
+        $('#loginStuff').show();
+    });
 });
