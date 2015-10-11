@@ -40,7 +40,7 @@
                     name="{{ res.name }}"
                 />
             {% endif %}
-            {% if res.reserved %}
+            {% if not res.reserved %}
                 <getreservation
                     start="{{ res.start_dt|date:'U' }}"
                     end="{{ res.end_dt|date:'U' }}"
