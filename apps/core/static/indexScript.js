@@ -10,6 +10,6 @@ $(document).ready(function(){
 		$(this).animate({opacity:'1'}, 200);
 	});
     $('#signIn').click(function() {
-        $('#loginStuff').show();
+        $('#loginStuff').show(400);
     });
 });
