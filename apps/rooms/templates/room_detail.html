@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {{ room.user }}
+    {% if room.user == request.user %}
+        {% for res in spots %}
+            {{ res }}
+        {% endfor %}
+    {% else %}
+        {% for res in spots %}
+            {{ res }}
+        {% endfor %}
+    {% endif %}
+{% endblock %}

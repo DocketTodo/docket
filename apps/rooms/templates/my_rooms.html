@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% for r in rooms %}
+        <div>
+            <a href="/rooms/room/{{ r.id }}">{{ r }}</a>
+        </div>
+    {% endfor %}
+{% endblock %}
