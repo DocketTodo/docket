@@ -1,14 +1,43 @@
 <editcreatereservation>
     <div>
-        <div>{ start_time } { start_date } - { end_time } { end_date }</div>
-        <div><input name="reserve" type="checkbox" onchange={ reserve } checked={ opts.reserved } /></div>
+        <div><input type="text" name="start" /></div>
+        <div><input type="text" name="end" /></div>
+        <div><button onclick={ modify }></button></div>
         <!--<div><input name="name" type="text" value={ opts.name }/></div>-->
     </div>
 
     <script>
+        var FIRST = opts.first;
+        var ID;
 
         this.modify = function() {
-            
+            var start = this.start.value;
+            var end = this.end.value;
+            var request;
+            if (FIRST) {
+                var request = axios.post('/rest/slots/slot', {
+                    'start_dt': start,
+                    'end_dt': end,
+                    'room': ROOM
+                }, config);
+            } else {
+                var request = axios.patch('/rest/slots/slot' + ID, {
+                    'start_dt': start,
+                    'end_dt': end
+                }, config);
+            }
+            request.then(function(data) {
+                ID = data.data.id;
+                FIRST = false;
+            }).catch(function(err) {
+                console.log(err);
+                document.write(err.data);
+            });
         }
+
+        this.on('mount', function() {
+            rome(this.start);
+            rome(this.end);
+        });
     </script>
 </editcreatereservation>

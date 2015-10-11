@@ -5,6 +5,7 @@
     <script>
         var CSRF_TOKEN = '{{ csrf_token }}';
         var USER = '{{ request.user.id }}';
+        var ROOM = {{ room.id }};
 
         var config = {
             headers: {
@@ -16,9 +17,17 @@
 
 {% block content %}
     {{ room.user }}
+    <button id="addRes">Add Reservation</button>
+    <hr id="first" />
     {% if room.user == request.user %}
         {% for res in spots %}
-            {{ res }}
+            <editcreatereservation
+                start="{{ res.start_dt|date:'U' }}"
+                end="{{ res.end_dt|date:'U' }}"
+                id="{{ res.id }}"
+                reserved="{% if res.user == request.user %}yes{% endif %}"
+                name="{{ res.name }}"
+            />
         {% endfor %}
     {% else %}
         {% for res in spots %}
@@ -49,5 +58,23 @@
     <script src="{% static 'editCreateReservation.html' %}" type="riot/tag"></script>
     <script>
         riot.mount('*');
+
+        function guid() {
+          function s4() {
+            return Math.floor((1 + Math.random()) * 0x10000)
+              .toString(16)
+              .substring(1);
+          }
+          return 'a' + s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+            s4() + '-' + s4() + s4() + s4();
+        }
+
+        document.getElementById('addRes').addEventListener('click', function() {
+            var id = guid();
+            var newEl = document.createElement('editcreatereservation');
+            newEl.setAttribute("id", id);
+            document.getElementById('first').parentNode.insertBefore(newEl, document.getElementById('first'));
+            riot.mount('#' + id, {first: true});
+        });
     </script>
 {% endblock %}

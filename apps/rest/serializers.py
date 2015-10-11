@@ -54,4 +54,6 @@ class TimeSlotCreateSerializer(serializers.ModelSerializer):
 
     def create(self, kwargs):
         kwargs['user'] = self.context['request'].user
-        return TimeSlot.objects.create(**kwargs)
+        t = TimeSlot.objects.create(**kwargs)
+        t.save()
+        return t
