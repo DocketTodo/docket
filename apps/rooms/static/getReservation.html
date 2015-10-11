@@ -19,7 +19,7 @@
                 var name = this.name.value;
                 name = ''
                 axios.patch('/rest/slots/slot/' + opts.id, {
-                    'name': name,
+                    'name': '',
                     'user': null
                 }, config).then(function(data) {
                     console.log(data);
@@ -29,7 +29,7 @@
                 RESERVED = false;
             } else {
                 axios.patch('/rest/slots/slot/' + opts.id, {
-                    'name': '',
+                    'name': name,
                     'user': USER
                 }, config).then(function(data) {
                     console.log(data);
