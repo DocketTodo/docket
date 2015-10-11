@@ -17,9 +17,9 @@
 
 {% block content %}
     {{ room.user }}
-    <button id="addRes">Add Reservation</button>
     <hr id="first" />
     {% if room.user == request.user %}
+        <button id="addRes">Add Reservation</button>
         {% for res in spots %}
             <editcreatereservation
                 start="{{ res.start_dt|date:'U' }}"

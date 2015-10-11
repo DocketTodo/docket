@@ -1,0 +1,55 @@
+{% if request.user.is_authenticated %}
+    <div class="footer">
+        <span class="text1"><a href="/reservations/mine">My Reservations</a></span>
+        <span class="text2"><a href="/rooms/search">Search Reservations</a></span>
+        <span class="text3"><a href="/accounts/logout">Log Out</a></span>
+    </div>
+    <style>
+        .text1 {
+    color: black !important;
+    font-family: "bebas Neue", Sans-Serif;
+    font-size: 1cm;    
+    margin: 0 5%;
+    z-index: 100;
+}
+
+.text2 {
+    color: black !important;
+    font-family: "bebas Neue", Sans-Serif;
+    font-size: 1cm;    
+    margin: 0 5%;
+
+}
+
+.text3 {
+    color: black !important;
+    font-family: "bebas Neue", Sans-Serif;
+    font-size: 1cm;    
+    margin: 0 5%;
+
+    
+}
+
+.Header{
+    color: #102020 ;
+    width: 100%
+    height: 100px;
+
+}
+
+.fill{
+    color: #f1f1f1 ;
+    width: 100%
+    height: 900px;
+}
+.footer{
+    padding: 2.5%;
+    background-color: #f1fbf5 ;
+    margin: 0 auto;
+    text-align: center;
+}
+.footer a {
+    text-decoration: none;
+    }
+    </style>
+{% endif %}

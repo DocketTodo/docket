@@ -1,14 +1,21 @@
 <editcreatereservation>
     <div>
-        <div><input type="text" name="start" /></div>
-        <div><input type="text" name="end" /></div>
-        <div><button onclick={ modify }></button></div>
+        <div><input type="text" name="start" value={ start_time + ' ' + start_date } /></div>
+        <div><input type="text" name="end" value={ end_time + ' ' + end_date } /></div>
+        <div><button onclick={ modify }>Save</button></div>
         <!--<div><input name="name" type="text" value={ opts.name }/></div>-->
     </div>
 
     <script>
         var FIRST = opts.first;
         var ID;
+
+        var start = new Date(opts.start * 1000);
+        var end = new Date(opts.end * 1000);
+        this.start_time = moment(start).format('h:mm');
+        this.end_time = moment(end).format('h:mm');
+        this.start_date = moment(start).format('M/D/YY');
+        this.end_date = moment(end).format('M/D/YY');
 
         this.modify = function() {
             var start = this.start.value;

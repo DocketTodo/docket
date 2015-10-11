@@ -2,6 +2,6 @@
 
 {% block content %}
     {% for r in rooms %}
-        {{ r }}
+        <div><a href="/rooms/room/{{ r.id }}">{{ r }}</a></div>
     {% endfor %}
 {% endblock %}
