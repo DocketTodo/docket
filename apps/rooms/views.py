@@ -49,7 +49,7 @@ class RoomDetail(LoggedInRequiredMixin, DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(RoomDetail, self).get_context_data(**kwargs)
-        context['spots'] = TimeSlot.objects.filter(room=self.object, user=None)
+        context['spots'] = TimeSlot.objects.filter(room=self.object)
         return context
 
 

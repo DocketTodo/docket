@@ -14,7 +14,10 @@ class RoomSerializer(serializers.ModelSerializer):
         fields = ('username', 'name', 'description', 'slots', 'rating', )
 
     def get_username(self, obj):
-        return obj.user.username
+        if obj.user:
+            return obj.user.username
+        else:
+            return None
 
     def get_slots(self, obj):
         return [{
@@ -24,21 +27,31 @@ class RoomSerializer(serializers.ModelSerializer):
             'e_time': t.end_dt
         } for t in TimeSlot.objects.filter(room=obj)]
 
-    # def update(self, instance, validated_data):
-    #     get = validated_data.get
-    #     if self.context['request'].user == instance.user:
-    #         instance.data = get('data', instance.data)
-    #         instance.save()
-    #         return instance
-    #     raise PermissionDenied
-
 
 class TimeSlotSerializer(serializers.ModelSerializer):
-    username = serializers.SerializerMethodField()
 
     class Meta:
         model = TimeSlot
-        fields = ('name', 'username', 'start_dt', 'end_dt', 'room', )
+        fields = ('name', 'user', 'start_dt', 'end_dt', 'room', )
 
-    def get_username(self, obj):
-        return obj.user.username
+    # def get_username(self, obj):
+    #     if obj.user:
+    #         return obj.user.username
+    #     else:
+    #         return None
+
+    # def update(self, instance, validated_data):
+    #     get = validated_data.get
+    #     print validated_data
+    #     raise PermissionDenied
+
+
+class TimeSlotCreateSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = TimeSlot
+        fields = ('name', 'start_dt', 'end_dt', 'room', )
+
+    def create(self, kwargs):
+        kwargs['user'] = self.context['request'].user
+        return TimeSlot.objects.create(**kwargs)

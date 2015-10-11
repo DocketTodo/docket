@@ -1,0 +1,43 @@
+<getreservation>
+    <div>
+        <div>{ start_time } { start_date } - { end_time } { end_date }</div>
+        <div><input name="reserve" type="checkbox" onchange={ reserve } checked={ opts.reserved } /></div>
+        <!--<div><input name="name" type="text" value={ opts.name }/></div>-->
+    </div>
+
+    <script>
+        var start = new Date(opts.start * 1000);
+        var end = new Date(opts.end * 1000);
+        this.start_time = moment(start).format('h:mm');
+        this.end_time = moment(end).format('h:mm');
+        this.start_date = moment(start).format('M/D/YY');
+        this.end_date = moment(end).format('M/D/YY');
+        var RESERVED = opts.reserved;
+
+        this.reserve = function() {
+            if (RESERVED) {
+                var name = this.name.value;
+                name = ''
+                axios.patch('/rest/slots/slot/' + opts.id, {
+                    'name': name,
+                    'user': null
+                }, config).then(function(data) {
+                    console.log(data);
+                }).catch(function(info) {
+                    console.log(info);
+                });
+                RESERVED = false;
+            } else {
+                axios.patch('/rest/slots/slot/' + opts.id, {
+                    'name': '',
+                    'user': USER
+                }, config).then(function(data) {
+                    console.log(data);
+                }).catch(function(info) {
+                    console.log(info);
+                });
+                RESERVED = true;
+            }
+        }
+    </script>
+</getreservation>

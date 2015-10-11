@@ -15,7 +15,7 @@ from rest_framework.permissions import IsAuthenticated
 from apps.rooms.models import Room
 from apps.slots.models import TimeSlot
 
-from .serializers import RoomSerializer, TimeSlotSerializer
+from .serializers import RoomSerializer, TimeSlotSerializer, TimeSlotCreateSerializer
 
 class RoomDetail(SessionAuthentication, generics.RetrieveUpdateDestroyAPIView):
     queryset = Room.objects.all()
@@ -26,6 +26,13 @@ class RoomDetail(SessionAuthentication, generics.RetrieveUpdateDestroyAPIView):
     def get_object(self):
         return Room.objects.get(
             id=self.kwargs['pk'])
+
+
+class TimeSlotCreate(SessionAuthentication, generics.CreateAPIView):
+    queryset = TimeSlot.objects.all()
+    serializer_class = TimeSlotCreateSerializer
+    authentication_classes = (SessionAuthentication, )
+    permission_classes = (IsAuthenticated,)
 
 
 class TimeSlotDetail(SessionAuthentication, generics.RetrieveUpdateDestroyAPIView):

@@ -26,7 +26,7 @@ class Index(FormView):
     success_url = reverse_lazy('index')
     
     def dispatch(self, request, *args, **kwargs):
-        if request.user.is_authenticated:
+        if request.user.is_authenticated():
             return redirect(reverse('reservations:my-reservations'))
         return super(Index, self).dispatch(request, *args, **kwargs)
 

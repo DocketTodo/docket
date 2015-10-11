@@ -2,8 +2,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>{% block title %}{% endblock %}ElementalCode</title>
+  <title>Docket{% block title %}{% endblock %}</title>
   <link rel="stylesheet" type="text/css" href="{% static 'main.css' %}" />
+  <script src="{% static 'axios.js' %}"></script>
+  <script src="{% static 'riot.js' %}"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
   {% block morescripts %}{% endblock morescripts %}
 </head>
 <body>

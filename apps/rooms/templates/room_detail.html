@@ -1,4 +1,18 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block morescripts %}
+    <script>
+        var CSRF_TOKEN = '{{ csrf_token }}';
+        var USER = '{{ request.user.id }}';
+
+        var config = {
+            headers: {
+                "X-CSRFToken": CSRF_TOKEN
+            }
+        };
+    </script>
+{% endblock %}
 
 {% block content %}
     {{ room.user }}
@@ -8,7 +22,32 @@
         {% endfor %}
     {% else %}
         {% for res in spots %}
-            {{ res }}
+            {% if res.user == request.user %}
+                <getreservation
+                    start="{{ res.start_dt|date:'U' }}"
+                    end="{{ res.end_dt|date:'U' }}"
+                    id="{{ res.id }}"
+                    reserved="{% if res.user == request.user %}yes{% endif %}"
+                    name="{{ res.name }}"
+                />
+            {% endif %}
+            {% if res.reserved %}
+                <getreservation
+                    start="{{ res.start_dt|date:'U' }}"
+                    end="{{ res.end_dt|date:'U' }}"
+                    id="{{ res.id }}"
+                    reserved="{% if res.user == request.user %}yes{% endif %}"
+                    name="{{ res.name }}"
+                />
+            {% endif %}
         {% endfor %}
     {% endif %}
+{% endblock %}
+
+{% block extra_scripts %}
+    <script src="{% static 'getReservation.html' %}" type="riot/tag"></script>
+    <script src="{% static 'editCreateReservation.html' %}" type="riot/tag"></script>
+    <script>
+        riot.mount('*');
+    </script>
 {% endblock %}
