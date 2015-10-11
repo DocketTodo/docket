@@ -4,7 +4,8 @@ from apps.rooms.models import Room
 from apps.accounts.models import DocketUser
 
 class TimeSlot(models.Model):
-    room = models.ForeignKey(Room)
+    room = models.ForeignKey(Room, blank=True, null=True)
+    roomId = models.IntegerField()
     user = models.ForeignKey(DocketUser, blank=True, null=True)
     start_dt = models.DateTimeField()
     end_dt = models.DateTimeField()
@@ -17,7 +18,7 @@ class TimeSlot(models.Model):
         else:
             return 'Unnamed reservation'
 
-    def save(self, *args, **kwargs):
+    def save(self, force_insert=False, force_update=False, **kwargs):
         self.reserved = not self.user
-        super(TimeSlot, self).save(*args, **kwargs)
-        return super(TimeSlot, self).save(*args, **kwargs)
+        self.room = Room.objects.get(id=self.roomId)
+        return super(TimeSlot, self).save(force_insert=False, **kwargs)

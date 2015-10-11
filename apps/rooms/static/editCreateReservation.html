@@ -18,20 +18,20 @@
                 var request = axios.post('/rest/slots/slot', {
                     'start_dt': start,
                     'end_dt': end,
-                    'room': ROOM
+                    'roomId': ROOM
                 }, config);
             } else {
-                var request = axios.patch('/rest/slots/slot' + ID, {
+                var request = axios.patch('/rest/slots/slot/' + ID, {
                     'start_dt': start,
                     'end_dt': end
                 }, config);
             }
             request.then(function(data) {
+                console.log(data);
                 ID = data.data.id;
                 FIRST = false;
             }).catch(function(err) {
                 console.log(err);
-                document.write(err.data);
             });
         }
 

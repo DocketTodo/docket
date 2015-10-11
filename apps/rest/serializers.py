@@ -50,10 +50,8 @@ class TimeSlotCreateSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = TimeSlot
-        fields = ('name', 'start_dt', 'end_dt', 'room', )
+        fields = ('name', 'start_dt', 'end_dt', 'roomId', 'id', )
 
     def create(self, kwargs):
         kwargs['user'] = self.context['request'].user
-        t = TimeSlot.objects.create(**kwargs)
-        t.save()
-        return t
+        return TimeSlot.objects.create(**kwargs)
