@@ -1,18 +1,27 @@
 {% extends "base.html" %}
 {% load staticfiles %}
+{% load tags %}
 
 {% block content %}
 	<title>Docket</title>
+
     <div id='header'>
         <div id='title'>Docket</div>
+        <div class='buttons' id='signIn'>
+            <div id='signBG'></div>
+            <div id='signTxt'>Sign In</div>
+        </div>
+        <div class='buttons' id='signUp'>
+            <div id='signTxt'>Sign Up</div>
+        </div>
     </div>
-    <form method='POST'>
+    <form id='loginForm' method='POST'>
     <div id='loginStuff'>
         {% csrf_token %}
-        username:<br>
-    	{{ form.username }}
-        <br>password:<br>
-        {{ form.password }}
-        <br><button>submit</button>
+        <div id='username'>Username</div>
+    	{{ form.username|addcss:"user" }}
+        <div id="password">Password</div>
+        {{ form.password|addcss:"pass" }}
+        <button id='submit'>submit</button>
     </div> 
 {% endblock %}
