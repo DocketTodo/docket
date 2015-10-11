@@ -19,6 +19,6 @@ class TimeSlot(models.Model):
             return 'Unnamed reservation'
 
     def save(self, force_insert=False, force_update=False, **kwargs):
-        self.reserved = self.user
+        self.reserved = not not self.user
         self.room = Room.objects.get(id=self.roomId)
         return super(TimeSlot, self).save(force_insert=False, **kwargs)
