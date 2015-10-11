@@ -16,7 +16,7 @@ body{
 #hero{
 	position:absolute;
 	width:110%;
-	opacity:.6;
+	opacity:.5;
 	left: -5%;
 	z-index: 1;
 	bottom:0;
