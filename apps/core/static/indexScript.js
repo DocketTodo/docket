@@ -12,4 +12,7 @@ $(document).ready(function(){
     $('#signIn').click(function() {
         $('#loginStuff').show(400);
     });
+    $('#close').click(function() {
+        $('#loginStuff').hide(400);
+    });
 });
